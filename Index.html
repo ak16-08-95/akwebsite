@@ -1,0 +1,605 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title> AK Tourism</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="Chart.bundle.js"></script>
+      <script src="utils.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+          
+          
+          .fa:hover {
+	text-decoration: none;
+	color: white;
+	background: #007bb5;
+}
+
+.fa {
+	background: white;
+	border-radius: 50%;
+	color: black;
+	padding: 14px;
+	border: solid 1px #007bb5;
+	font-size: 18px;
+	width: 50px;
+	text-align: center;
+	text-decoration: none;
+	margin: 0;
+}
+
+body {
+	position: relative;
+}
+
+#section1 {
+	padding-top: 50px;
+	color: black;
+	background-color: white;
+}
+
+#section2 {
+	padding-top: 50px;
+	color: #fff;
+	background-color: #333333;
+}
+
+#section3 {
+	padding-top: 50px;
+	color: black;
+	background-color: white;
+}
+
+#section5 {
+	padding-top: 50px;
+	color: #fff;
+	background-color: #333333;
+}
+
+#section4 {
+	padding-top: 50px;
+	color: black;
+	background-color: white;
+}
+
+.mySlides {
+	display: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.img-magnifier-container {
+	position: relative;
+}
+
+.img-magnifier-glass {
+	position: absolute;
+	border: 3px solid #000;
+	/* border-radius: 50%;*/
+	cursor: none;
+	/*Set the size of the magnifier glass:*/
+	width: 150px;
+	height: 150px;
+}
+
+.tc {
+	text-align: center;
+	height: 350px;
+}
+
+iframe {
+	width: 100% !important;
+	height: 350px !important;
+}
+
+.slider_width {
+	max-width: 572px;
+	margin: auto;
+}
+
+.slider_container {
+	position: relative;
+	margin-top: 4%;
+}
+
+.slider_black,
+.w3-hover-black:hover {
+	color: #fff!important;
+	background-color: #000!important;
+}
+
+.slider_button {
+	border: none;
+	display: inline-block;
+	padding: 8px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.slider_left {
+	position: absolute;
+	top: 44%;
+	left: 0%;
+	transform: translate(0%, -50%);
+	-ms-transform: translate(-0%, -50%);
+}
+
+.slider_right {
+	position: absolute;
+	top: 44%;
+	right: 0%;
+	transform: translate(0%, -50%);
+	-ms-transform: translate(0%, -50%);
+}
+
+.text {
+	color: black;
+}
+
+.back_send {
+	background: #3f3e3e;
+	color: white;
+}
+
+.back_send:hover {
+	background: white;
+	color: black;
+	border: solid 1px black;
+}
+
+.lab_color {
+	color: dodgerblue;
+}
+
+.tick {
+	text-align: center;
+	color: red;
+}
+
+.back_btn {
+	background: black;
+}
+
+.back_btn:hover {
+	background: white;
+	color: black;
+	border: solid 1px black;
+}
+
+footer {
+	background: #222222;
+	color: white;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.shadow {
+	box-shadow: 3px 5px 63px 0px black;
+}
+
+.col-xs-12 {
+	margin-bottom: 10px;
+}
+
+#myimage {
+	height: 300px;
+	width: 570px;
+}
+
+.img_ak {
+	height: 200px !important;
+	max-height: 200px;
+	width: 400px;
+}
+
+canvas {
+	background: white;
+}
+
+.graph {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+select {
+	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+	#myimage {
+		height: 300px;
+		width: 100%;
+	}
+	.just_text {
+		text-align: justify;
+	}
+}
+
+.text1 {
+	color: white;
+}
+
+.back_send1 {
+	background: white;
+	color: black;
+	border: solid 1px black;
+}
+
+.height_img {
+	height: 160px;
+}
+
+.aklogo {
+	width: 46px;
+	position: relative;
+	left: 0;
+	top: -11px;
+	float: left;
+}
+
+.navbar-brand {
+	float: left;
+	height: 50px;
+	padding: 14px 4px;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.color_logo {
+	color: white;
+	font-family: -webkit-body;
+}
+
+#map {
+	padding: 10px;
+}
+
+.back_btn:focus {
+	color: white;
+}
+
+.back_send:focus {
+	color: white;
+}
+          
+          
+      </style>
+   </head>
+   <body data-spy="scroll" data-target=".navbar" data-offset="50">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                        
+               </button>
+               <a class="navbar-brand" href="#"><img class="img-responsive aklogo" src="aklogo1.jpg"><span class="color_logo"> AK Tourism</span></a>
+            </div>
+            <div>
+               <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav">
+                     <li><a href="#section1">Home</a></li>
+                     <li><a href="#section2">Book Tickets</a></li>
+                     <li><a href="#section4">Our Progress</a></li>
+                     <li><a href="#section5">History</a></li>
+                     <li><a href="#section3">About Us</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <div id="section1" class="container-fluid">
+         <div class="slider_width slider_container">
+            <div class="mySlides tc" style="width:100%"> <img id="myimage" src="world_tour.jpg"></div>
+            <div class="mySlides tc" > <img id="myimage" src="travel.jpg"></div>
+            <div class="mySlides tc" > <img id="myimage" src="transport.jpg"></div>
+            <div class="mySlides tc" > <img id="myimage" src="plain.jpg"></div>
+            <div class="mySlides tc" > <img id="myimage" src="paris.jpg"></div>
+            <button class="slider_button  slider_black slider_left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="slider_button  slider_black slider_right" onclick="plusDivs(1)">&#10095;</button>
+         </div>
+      </div>
+      <div id="section2" class="container-fluid">
+         <!-- Container (TOUR Section) -->
+         <div id="tour" class="bg-1">
+            <div class="container">
+               <h3 class="text-center">TOUR PACKAGES</h3>
+               <p class="text-center">Select your Package</p>
+               <div class="row text-center">
+                  <div class="col-sm-4">
+                     <div class="thumbnail shadow">
+                        <img class="img_ak" src="paris_1.jpg" alt="Paris">
+                        <p class="text"><strong>Paris</strong></p>
+                        <button class="back_btn btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+                     </div>
+                  </div>
+                  <div class="col-sm-4">
+                     <div class="thumbnail shadow">
+                        <img class="img_ak" src="new_york.jpg" alt="New York" width="400">
+                        <p class="text"><strong>New York</strong></p>
+                        <button class="back_btn btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+                     </div>
+                  </div>
+                  <div class="col-sm-4">
+                     <div class="thumbnail shadow">
+                        <img class="img_ak" src="san.jpg" alt="San Francisco" width="400">
+                        <p class="text"><strong>San Francisco</strong></p>
+                        <button class="back_btn btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+               <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="tick"><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+                     </div>
+                     <div class="modal-body">
+                        <form role="form">
+                           <div class="form-group">
+                              <label class="lab_color" for="psw"><span class=" glyphicon glyphicon-shopping-cart"></span> Tickets, 50,00,000 per person</label>
+                              <input type="number" class="form-control" id="psw" placeholder="How many?">
+                           </div>
+                           <div class="form-group">
+                              <label class="lab_color" for="usrname"><span class=" glyphicon glyphicon-user"></span> Send To</label>
+                              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                           </div>
+                           <button type="submit" class="back_btn btn btn-block">Buy Ticket
+                           </button>
+                        </form>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="section4" class="container-fluid">
+         <h3 class="text-center text">Our Progress</h3>
+         <div class="graph">
+            <select class="form-control col-md-4" id="checker"  onchange="ak_attendance_graph();">
+               <option value="month">Month</option>
+               <option value="week">Week</option>
+               <option value="daily">Daily</option>
+            </select>
+            <canvas id="canvas"></canvas>
+         </div>
+      </div>
+      <div id="section5" class="container-fluid">
+         <h3 class="text-center">History</h3>
+         <div class="col-md-12 col-xs-12">
+            <div class="col-md-12 col-xs-12">
+               <div class="col-md-4 col-xs-12">
+                  <img class="height_img img-responsive" src="company3.jpg">
+               </div>
+               <div class="col-md-8 col-xs-12">
+                  <p class="just_text">Tourism is often seen as a global phenomenon with an almost incomprehensibly massive infrastructure. Its importance is evident from the fact that its influence thoroughly penetrates society, politics, culture and, above all, the economy. Indeed, this is the branch of the global economy with the most vigorous growth: the World Tourism Organisation (WTO) estimates that in 2007 it encompassed 904 million tourists who spent 855 billion US dollars.1 They thereby supported a global system with roughly 100 million employees in the modern leisure and experience industry. There exists a complex, interwoven world-wide structure dedicated to satisfying the specific touristic needs of mobile individuals, groups and masses. Since its inception, tourism has polarised: it reveals numerous views ranging from the total approval of its potential for enriching self-realisation combined with recreation to critical rejection due to the belief that it causes harm through the systematic dumbing down of entertainment and avoidable environmental destruction.</p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+               <div class="col-md-8 col-xs-12">
+                  <p class="just_text">
+                     Beginning in the early 1920s, an early theory of Fremdenverkehr – a now obsolete term for tourism – emerged in the German-speaking world that dealt mainly with business and economic problems; since the 1960s, it has been replaced by the ever-expanding field of tourism studies. This gives many disciplines the space to approach the subject of tourism, or at least aspects of it, from their own particular academic perspective. Today, tourism studies means the multi-disciplinary bundle of academic approaches in the sense of an undisguised "transdiscipline",2 which can find different applications. However, tourism studies does not exist as an integrated field of study. Instead, there are countless empirical accounts, case studies, approaches, theories and perspectives in individual disciplines, including economy, geography, psychology, architecture, ecology, sociology, political science and medicine.
+                  </p>
+               </div>
+               <div class="col-md-4 col-xs-12">
+                  <img class="height_img img-responsive" src="images1.jpg">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="section3" class="container-fluid">
+         <h3 class="text text-center">Contact Us</h3>
+         <div class="row">
+            <div class="col-md-4">
+               <p class="text"><span class="glyphicon glyphicon-map-marker"></span> Dadar, Mumbai</p>
+               <p class="text"><span class="glyphicon glyphicon-phone"></span> Phone: +91 7506560095</p>
+               <p class="text"><span class="glyphicon glyphicon-envelope"></span> Email: akhedaskar@gmail.com</p>
+               <div class="row col-md-12 row">
+                  <div class="col-md-12">
+                     <p class="text">Follow us on:</p>
+                  </div>
+                  <div class="col-md-12 col-xs-12">     <a href="#" class="fa fa-facebook"></a>
+                     <a href="#" class="fa fa-twitter"></a>
+                     <a href="#" class="fa fa-linkedin"></a>
+                     <a href="#" class="fa fa-instagram"></a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-8">
+               <div class="row">
+                  <div class="col-sm-6 form-group">
+                     <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                  </div>
+                  <div class="col-sm-6 form-group">
+                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                  </div>
+               </div>
+               <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+               <br>
+               <div class="row">
+                  <div class="col-md-12 form-group">
+                     <button class="back_send btn pull-right" type="submit">Send</button>
+                  </div>
+               </div>
+            </div>
+            <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7544.4737597047315!2d72.82949944763571!3d19.00928079802074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ceea5c898b6b%3A0x89e708db65c07b46!2sSportsmed+Mumbai!5e0!3m2!1sen!2sin!4v1531835579781" width="100%" height="325" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+         </div>
+      </div>
+      <footer>
+         <div>Created by Akshay Khedaskar</div>
+      </footer>
+       
+       <script>
+           
+           var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = x.length
+    }
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex - 1].style.display = "block";
+}
+
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {
+        myIndex = 1
+    }
+    x[myIndex - 1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+
+function ak_attendance_graph() {
+    var val = document.getElementById('checker').value;
+    if (val == "month") {
+        var data = window.myLine.config.data;
+        data.datasets[0].data = [10000, 2000, 3000, 500, 6000, 8000, 9000, 0, 4000, 3000, 12000, 11000];
+        data.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        myLine.options.scales.xAxes[0].scaleLabel.labelString = "Month";
+        window.myLine.update();
+    } else if (val == "week") {
+
+        var data = window.myLine.config.data;
+        data.datasets[0].data = [1000, 2000, 3000, 4000, 5000, 6000];
+        data.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thusday', 'Friday', 'Saturday'];
+        myLine.options.scales.xAxes[0].scaleLabel.labelString = "Week";
+        window.myLine.update();
+
+    } else if (val == "daily") {
+        var data = window.myLine.config.data;
+        data.datasets[0].data = [100, 200, 300];
+        data.labels = ['Morning', 'Afternoon', 'Evening'];
+        myLine.options.scales.xAxes[0].scaleLabel.labelString = "Daily";
+        window.myLine.update();
+
+    }
+
+}
+
+
+
+
+var first = 10000;
+var second = 46567;
+var third = 75443;
+var four = 54544;
+var five = 8989;
+var six = 455;
+var seven = 56;
+var eight = 34566;
+var nine = 56;
+var ten = 4643;
+var eleven = 473535;
+var twelve = 421225;
+
+
+
+
+var config = {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Filled',
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            data: [
+
+                first,
+                second,
+                third,
+                four,
+                five, six, seven, eight, nine, ten, eleven, twelve
+            ],
+            fill: true,
+        }]
+    },
+    options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Progress'
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Rupees'
+                }
+            }]
+        }
+    }
+};
+
+window.onload = function() {
+    var ctx = document.getElementById('canvas').getContext('2d');
+    window.myLine = new Chart(ctx, config);
+
+
+
+};
+           
+       </script>   
+   </body>
+</html>
